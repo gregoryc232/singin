@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff Sign-In | Azi's Global</title>
+  <link rel="stylesheet" href="staffstyle.css" />
+</head>
+<body>
+  <div class="container fade-in">
+    <!-- Logo -->
+    <img src="../../assets/logo.png" alt="Azi's Global Logo" class="logo" />
+
+    <!-- Title -->
+    <h1>Staff Sign-In</h1>
+
+    <!-- Sign-In Form -->
+    <form id="signInForm">
+      <select id="warehouse" required>
+        <option value="">Select Warehouse</option>
+        <option value="Azi's Global Container Freight Station (CFS)">Azi's Global CFS</option>
+        <option value="Azi's Global Landing Drive">Landing Drive</option>
+        <option value="Azi's Global Wellington">Wellington</option>
+      </select>
+
+      <select id="name" required>
+        <option value="">Select Staff</option>
+        <!-- Populated dynamically -->
+      </select>
+
+      <input type="text" id="staffId" placeholder="Staff ID" required readonly />
+      <button type="submit">Sign In</button>
+    </form>
+
+    <!-- Sign-Out -->
+    <button id="signOutBtn">Sign Out</button>
+    <p id="message"></p>
+
+  <script src="staffscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* General page styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #204770, #0080ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #222;
+}
+
+/* Main container card */
+.container {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 700px;
+  text-align: center;
+  overflow-y: auto;
+  max-height: 90vh;
+  animation: fadeIn 0.8s ease;
+}
+
+/* Logo */
+.logo {
+  width: 70px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Title */
+h1 {
+  color: #0056b3;
+  margin-bottom: 15px;
+}
+
+/* Subheadings */
+h2 {
+  color: #204770;
+  margin-top: 30px;
+}
+
+/* Forms and inputs */
+form {
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input[readonly] {
+  background-color: #f3f3f3;
+  color: #666;
+}
+
+/* Buttons */
+button {
+  width: auto;              /* shrink to fit text */
+  min-width: 120px;         /* set a nice minimum width */
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;        /* smaller padding */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;         /* slightly smaller text */
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+#signOutBtn {
+  background: #ff4d4d;
+}
+
+#signOutBtn:hover {
+  background: #d11a1a;
+}
+
+
+button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+#signOutBtn {
+  background: #ff4d4d;
+}
+
+#signOutBtn:hover {
+  background: #d11a1a;
+}
+
+/* Messages */
+#message {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #eef6ff;
+}
+
+/* Dropdown for warehouse filter */
+#filterWarehouse {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 70%;
+  font-size: 14px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px;
+  }
+
+  input, select, button {
+    width: 100%;
+  }
+
+  table {
+    font-size: 12px;
+  }
+}
