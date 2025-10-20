@@ -1,13 +1,22 @@
+// server.js
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Load environment variables
+dotenv.config();
+
+// Handle ES module __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import authRoutes from "./routes/auth.js";
 import bookingRoutes from "./routes/booking.js";
 import visitorRoutes from "./routes/visitor.js";
 import staffRoutes from "./routes/staff.js";
-
-
 
 const app = express();
 
@@ -15,24 +24,35 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// ✅ API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/visitors", visitorRoutes);
 app.use("/api/staff", staffRoutes);
 
+// ✅ Serve frontend (when deployed)
+const frontendPath = path.join(__dirname, "../frontend");
+app.use(express.static(frontendPath));
+
 app.get("/", (req, res) => {
-  res.send("Backend running ✅");
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
-// Connect to MongoDB
+// ✅ Connect to MongoDB
 const mongoUri = process.env.MONGO_URI;
+const PORT = process.env.PORT || 5000;
 
-try {
-  await mongoose.connect(mongoUri);
-  console.log("✅ Connected to MongoDB Atlas");
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-} catch (err) {
-  console.error("❌ MongoDB connection failed:", err.message);
+if (!mongoUri) {
+  console.error("❌ MONGO_URI is missing. Check your .env or Render Environment Variables.");
+  process.exit(1);
 }
+
+mongoose
+  .connect(mongoUri)
+  .then(() => {
+    console.log("✅ Connected to MongoDB Atlas");
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection failed:", err.message);
+  });
