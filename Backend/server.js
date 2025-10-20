@@ -35,7 +35,7 @@ const frontendPath = path.join(__dirname, "../frontend");
 app.use(express.static(frontendPath));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
+  res.sendFile(path.join(frontendPath, "home.html"));
 });
 
 // ✅ Connect to MongoDB
