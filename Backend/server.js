@@ -34,6 +34,11 @@ app.use("/api/staff", staffRoutes);
 const frontendPath = path.join(__dirname, "../Frontend");
 app.use(express.static(frontendPath));
 
+//check static file serving
+app.get("/check", (req, res) => {
+  res.send("Static files working ✅");
+});
+
 // Serve home.html for the root
 app.get("/", (req, res) => {
   res.sendFile(path.join(frontendPath, "/home.html"));
