@@ -31,17 +31,17 @@ app.use("/api/visitors", visitorRoutes);
 app.use("/api/staff", staffRoutes);
 
 // Serve frontend static files
-const frontendPath = path.join(__dirname, "../frontend");
+const frontendPath = path.join(__dirname, "../Frontend");
 app.use(express.static(frontendPath));
 
 // Serve home.html for the root
 app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendPath, "home.html"));
+  res.sendFile(path.join(frontendPath, "/home.html"));
 });
 
 // Catch all non-API routes safely (Express 5 compatible)
 app.get(/^(?!\/api).*/, (req, res) => {
-  res.sendFile(path.join(frontendPath, "home.html"));
+  res.sendFile(path.join(frontendPath, "/home.html"));
 });
 
 // ✅ Connect to MongoDB
