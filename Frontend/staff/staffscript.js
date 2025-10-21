@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api/staff";
+const API_BASE = "https://azisglobalportal.onrender.com/api/staff";
 
 const signInForm = document.getElementById("signInForm");
 const signOutBtn = document.getElementById("signOutBtn");
