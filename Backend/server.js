@@ -34,14 +34,25 @@ app.use("/api/staff", staffRoutes);
 const frontendPath = path.join(__dirname, "../frontend");
 app.use(express.static(frontendPath));
 
+// ✅ Serve home.html for root
+app.get("/", (req, res) => {
+  res.sendFile(path.join(frontendPath, "/singin/Frontend/home.html"));
+});
+
+// ✅ Handle all other frontend routes safely (Express 5 fix)
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(frontendPath, "/singin/Frontend/home.html"));
+});
+
+
 // ✅ Serve home.html as the root
 app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendPath, "home.html"));
+  res.sendFile(path.join(frontendPath, "/singin/Frontend/home.html"));
 });
 
 // ✅ Handle 404 fallback to home.html (optional for SPA routing)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(frontendPath, "home.html"));
+  res.sendFile(path.join(frontendPath, "/singin/Frontend/home.html"));
 });
 
 // ✅ Connect to MongoDB
